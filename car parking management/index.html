@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>parking</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/34b117096a.js" crossorigin="anonymous"></script>
+  <style>
+
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+div.cover{
+    position: relative;
+}
+div .input{
+  font-size: 10px;
+  color:white;
+  position: absolute;
+  top: 10%;
+  padding: 10px;
+  left: 5%;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-black>
+        <div class="container-fluid">
+          <h1 style="color:white;">parking managament</h1>
+          </div>
+        </div>
+      </nav>
+    
+  </header>
+  <main>
+    
+
+    <div class="row " style="margin-top: 70px;padding: 40px;">
+        <div class="col-lg-6 col-md-6 ">
+          <div class="cover">
+            <img src="image/photo_2023-06-17_11-06-04.jpg" alt=""> 
+            <div class="input">     
+            <div class="mb-3 " >
+                
+                <form id="parking-form">
+                <label for="inputPassword" class="col-sm-2 col-form-label"  style="font-size: 20px;">FullName</label>
+                <div class="col-sm-10">
+                  <input type="text" class="fullName" id="name">
+                </div>
+              </div>
+      <div class="mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label" style="font-size: 20px;">PlateNumber</label>
+        <div class="col-sm-10">
+          <input type="number" class="plate-number" id="pl-num">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label" style="font-size: 20px;">model</label>
+        <div class="col-sm-10">
+          <input type="text" class="car-color" id="carm">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label" style="font-size: 20px;">PhoneNumber</label>
+        <div class="col-sm-10">
+          <input type="tel" class="tel-num" id="telNum">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="btn"> register </button>
+      </div>
+    </form>
+        </div>
+        </div>
+      <div class="col-lg-6 col-md-6  card shadow-lg" style="background-color: white;">
+        <table id="myTable" class="table table-striped   table-responsive">
+            <thead>
+                <tr>
+                  <th scope="col"> Name</th>
+                  <th scope="col">Plate No</th>
+                  <th scope="col">model</th>
+                  <th scope="col">Phone No</th>
+                  <th scope="col">arrival time</th>
+                  <th scope="col">action</th>
+                </tr>
+              </thead>
+        </table>
+      </div>
+      </div>
+
+  </main>
+  
+   <script>
+    
+    let btn=document.getElementById('btn')
+    btn.addEventListener('click',fun)
+    
+
+    function fun(){
+        
+  var day = new Date();
+
+  var entrance = day.getHours() + " AM:" + day.getMinutes() + ":" + day.getSeconds();
+
+  let parkingTable = document.getElementById("myTable");
+
+
+         let name=document.getElementById("name").value
+        let plate = document.getElementById("pl-num").value;
+        let color = document.getElementById("carm").value;
+        let phoneNum=document.getElementById("telNum").value;
+
+var row = parkingTable.insertRow();
+var numRow = document.getElementById('myTable').rows.length;
+
+row.innerHTML = `
+<td>${name}</td>
+<td>${plate}</td>
+<td>${color}</td>
+<td>${phoneNum}</td>
+<td>${entrance}</td>
+`;
+
+row.id = numRow;
+var col= row.insertCell();
+
+var rem = document.createElement('input');
+    rem.type = "button";
+    rem.value = "x";
+    rem.style = "background-color:red;color:black;border-radius:7px;width:50px;height:30px"
+    col.appendChild(rem);
+
+    rem.onclick = 
+    function del() {
+       document.getElementById(numRow).remove(numRow);
+    };
+    
+};
+
+   </script>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
